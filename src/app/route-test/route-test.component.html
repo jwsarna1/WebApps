@@ -1,0 +1,21 @@
+<h2>
+    <a *ngFor="let nav of navs" 
+        [routerLink]="nav.url" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}"
+        >
+        {{nav.content}}
+    </a>
+</h2>
+
+<h1 class='ui heading bold'>{{input}}</h1>
+
+ <div class='ui image'>
+    <img src={{firstImage}}>
+ </div>
+  <div class="ui secondary menu">
+     <a href={{link}}>Link to Wikipedia Page</a>
+ </div>
+ <div class="ui ">
+     <p>{{description}}</p>
+ </div>
