@@ -1,0 +1,73 @@
+<script src="node_modules/chart.js/dist/Chart.bundle.min.js"></script> 
+<script src="Chart.js"></script>    
+<!--<h2>
+    <a *ngFor="let nav of navs" 
+        [routerLink]="nav.url" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}"
+        >
+        {{nav.content}}
+    </a>
+</h2>-->
+<form 
+      [formGroup]='myForm'
+      (ngSubmit)='onSubmit(myForm.value)'
+      class='ui large form segment'>
+
+    <div class='field'>
+      <label for='serachField'>Wiki Search</label>
+      <input 
+        name="searchField"
+        type="text"
+        minlength="1"
+        [formControl]='myForm.controls["searchField"]'
+        [(ngModel)]='searchField'
+        required>
+    </div>
+
+    <div>
+      <label for='searchFor'>Word to search for in results</label>
+      <input
+          name="searchFor"
+          type="text"
+          minlength="1"
+          [formControl]='myForm.controls["searchFor"]'
+          [(ngModel)]='searchFor'
+          required>
+    </div>
+
+    <!--<div *ngIf="submitted">
+      <div *ngFor="let image of images$">
+        <img src={{image.url}}>
+      </div>
+    </div>-->
+    <hr>
+
+    <button type='submit' class='ui button'>Submit</button>
+
+    <div *ngIf="myForm.invalid && submitted" class='ui negative message'>Form has errors</div>
+
+
+    <!--<div *ngIf="myForm.valid && submitted && !invalidAge" class = "message positive">
+      Successfully submitted form. 
+      Name: {{myForm.controls['firstName'].value}} {{myForm.controls['lastName'].value}}, 
+      Search results:  
+    </div>-->
+    <div *ngIf="myForm.valid && submitted" class = "message positive">
+      <ul>
+        <!--<li *ngFor="let item of items">{{item}}<li>-->
+      </ul>
+      <div>
+        <div style="display: block">
+          <canvas #myChart
+                  baseChart
+                  (chartClick)="chartClick($event)"
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType"></canvas>
+        </div>
+      </div>
+    </div>
+</form>
